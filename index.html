@@ -370,8 +370,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
   </footer>    
 
   <script>  
-    // Add the ad script to the document
-    (function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9361298,document.createElement('script'));
+    // Ad script will be loaded when clicking Next button
     
     // Sensi Generator Tool functionality
     const osSelect = document.getElementById('os-select');
@@ -424,7 +423,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
       }
     });
     
-    // Next button functionality with ad trigger
+    // Next button functionality with guaranteed ad display
     nextBtn.addEventListener('click', () => {
       // Check if all options are selected
       const os = osSelect.value;
@@ -437,69 +436,90 @@ Whether you're trying a new phone, switching networks, or just looking to improv
         return;
       }
       
-      // Trigger the ad before navigation
-      let adShown = false;
-      let adTimeout = false;
+      // Disable the button to prevent multiple clicks
+      nextBtn.disabled = true;
+      nextBtn.textContent = "Loading...";
       
-      // Create and inject the ad script
-      const adScript = document.createElement('script');
-      adScript.innerHTML = `
+      // Define navigation function for later use
+      const navigateToNextPage = () => {
+        window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
+      };
+      
+      // Create a container for the ad that we can detect
+      const adContainer = document.createElement('div');
+      adContainer.id = 'ad-container-' + new Date().getTime();
+      adContainer.style.position = 'fixed';
+      adContainer.style.top = '0';
+      adContainer.style.left = '0';
+      adContainer.style.width = '100%';
+      adContainer.style.height = '100%';
+      adContainer.style.backgroundColor = 'rgba(0,0,0,0.8)';
+      adContainer.style.zIndex = '9999';
+      adContainer.style.display = 'flex';
+      adContainer.style.justifyContent = 'center';
+      adContainer.style.alignItems = 'center';
+      
+      // Add loading text inside container
+      const loadingText = document.createElement('div');
+      loadingText.textContent = 'Loading...';
+      loadingText.style.color = 'white';
+      loadingText.style.fontSize = '24px';
+      adContainer.appendChild(loadingText);
+      
+      // Append container to body
+      document.body.appendChild(adContainer);
+      
+      // Reference to our ad script element
+      let adScriptElement = null;
+      
+      // Create and inject the ad script with a properly created script element
+      const loadAd = () => {
+        // Remove any existing ad script
+        if (adScriptElement) {
+          adScriptElement.remove();
+        }
+        
+        // Create ad script using the proper method
+        adScriptElement = document.createElement('script');
+        
+        // Use the provided ad code
         (function(d,z,s){
           s.src='https://'+d+'/401/'+z;
           try{
-            (document.body||document.documentElement).appendChild(s)
-          }catch(e){}
-        })('groleegni.net',9361298,document.createElement('script'))
-      `;
-      document.body.appendChild(adScript);
+            (document.body||document.documentElement).appendChild(s);
+          } catch(e){
+            console.error('Error loading ad:', e);
+          }
+        })('groleegni.net', 9361298, adScriptElement);
+      };
       
-      // Set a timeout to navigate even if the ad doesn't load
-      setTimeout(() => {
-        adTimeout = true;
-        if (!adShown) {
-          // Navigate to second.html page with parameters
-          window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
-        }
-      }, 3000); // 3-second timeout
+      // Load the ad
+      loadAd();
       
-      // Set up event listener for ad completion (this is a simplified approach)
-      window.addEventListener('message', function(event) {
-        // This would typically listen for a message from the ad iframe
-        // For this example, we're simplifying and just showing it works
-        if (event.data && event.data.type === 'adCompleted') {
-          adShown = true;
-          // Navigate to second.html page with parameters
-          window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
-        }
-      });
+      // Set up a minimum display time for the ad
+      const minimumAdTime = 5000; // 5 seconds minimum ad display
+      const startTime = new Date().getTime();
       
-      // Fallback if no ad event is fired
-      setTimeout(() => {
-        if (!adShown && !adTimeout) {
-          // Navigate to second.html page with parameters
-          window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
-        }
-      }, 5000); // 5-second fallback
-    });
-  
-    // FAQ toggle functionality  
-    document.querySelectorAll('.faq-item').forEach(item => {  
-      item.addEventListener('click', () => {  
-        const answer = item.querySelector('.faq-answer');  
-        if (answer.style.display === 'block') {  
-          answer.style.display = 'none';  
-        } else {  
-          answer.style.display = 'block';  
-        }  
-      });  
-      // Keyboard accessible toggle with enter key  
-      item.addEventListener('keydown', (e) => {  
-        if (e.key === 'Enter' || e.key === ' ') {  
-          e.preventDefault();  
-          item.click();  
-        }  
-      });  
-    });  
-  </script>  
-</body>  
-</html>
+      // Check if the ad has been properly loaded and displayed
+      const checkAdStatus = () => {
+        // Check if we've displayed for at least the minimum time
+        const currentTime = new Date().getTime();
+        const timeElapsed = currentTime - startTime;
+        
+        // Check if any ad elements have been created by the ad script
+        const adElements = document.querySelectorAll('iframe[src*="groleegni.net"], div[id*="gro"], div[class*="gro"]');
+        
+        if (adElements.length > 0) {
+          // Ad has been loaded, wait minimum time then navigate
+          setTimeout(() => {
+            adContainer.remove();
+            navigateToNextPage();
+          }, Math.max(0, minimumAdTime - timeElapsed));
+        } else if (timeElapsed < 8000) {
+          // Keep checking for up to 8 seconds
+          setTimeout(checkAdStatus, 500);
+        } else {
+          // After 8 seconds, try reloading the ad
+          if (timeElapsed < 15000) {
+            loadAd();
+            setTimeout(ch
