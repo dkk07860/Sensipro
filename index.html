@@ -199,6 +199,46 @@ form button:hover {
   background: #7f1616;  
 }  
 
+/* Ad Modal Overlay */
+.ad-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.ad-container {
+  background: #1c1c1c;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #B22222;
+  padding: 20px;
+  max-width: 90%;
+  position: relative;
+}
+
+.close-ad {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #B22222;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Footer */  
 footer {  
   text-align: center;  
@@ -261,19 +301,23 @@ footer {
     </div>
     
     <button id="next-btn">Next</button>
-    <!-- Banner Ad after Next button -->
-    <div style="width:100%; height:100px; background:#ff9999; margin:20px 0; text-align:center; line-height:100px; font-weight:bold;">
-  BANNER AD SPACE
-  <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('gizokraijaw.net',9363582,document.createElement('script'))</script>
-</div>
+  </div>
+
+  <!-- Ad Overlay Modal -->
+  <div class="ad-overlay" id="ad-overlay">
+    <div class="ad-container">
+      <button class="close-ad" id="close-ad">✕</button>
+      <div id="ad-content">
+        <!-- The ad content will be loaded here -->
+      </div>
+    </div>
   </div>
 
   <div class="container" id="what-is">  
     <h2>What Is Sensi Generator ?</h2>  
     <p>Sensi Generator is a smart and user-friendly tool created specifically for Free Fire players who want perfect sensitivity settings for their mobile device. Unlike one-size-fits-all settings, this tool offers customized sensitivity values based on your phone's unique specifications. Since every device has different touch response speeds, RAM capacities, display refresh rates, and processing power, having personalized sensitivity is critical for smooth gameplay. Sensi Generator removes the guesswork and instantly provides you with fine-tuned settings that can drastically improve your aim, control, and headshot accuracy.</p>
-  </div>    
 
-  <div class="container" id="how-to-use">  
+  </div>    <div class="container" id="how-to-use">  
     <h2>How Does It Work ?</h2>  
     <p>Sensi Generator works through a dynamic selection system that generates the best possible sensitivity based on your selected device profile. Here's how it functions:
 
@@ -284,15 +328,8 @@ footer {
 
 
 3. Instant Output – In just one click, the system shows you the most optimized sensitivity settings specifically designed for your device and network.</p>
-  </div>    
 
-  <!-- Mid-page Ad -->
-  <div style="width:100%; height:120px; background:#99ff99; margin:20px 0; text-align:center; line-height:120px; font-weight:bold;">
-  MID-PAGE AD SPACE
-  <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('gizokraijaw.net',9364308,document.createElement('script'))</script>
-</div>
-
-  <div class="container" id="how-to-view-html">  
+  </div>    <div class="container" id="how-to-view-html">  
     <h2>Why Sensi Generator Is Useful ?</h2>  
     <p>Sensi Generator isn't just a tool — it's a performance booster for every Free Fire player. Here's why it's so helpful:
 
@@ -305,24 +342,20 @@ Saves Time and Frustration: No need to test dozens of sensitivity values manuall
 Beginner Friendly, Pro-Level Results: Even if you're new to Free Fire, this tool helps you feel like a pro.
 
 Updated Frequently: The tool uses real gameplay feedback and regular updates to stay accurate with new devices and game updates.. </p>
-  </div>    
 
-  <div class="container" id="how-does-it-work">  
+  </div>    <div class="container" id="how-does-it-work">  
     <h2>How To Use Sensi Generator ?</h2>  
     <p>Using the Sensi Generator is incredibly simple and beginner-friendly. You don't need any special skills or technical knowledge to get started. First, visit the tool page where you'll find a set of dropdown options. From there, select the details that match your device: choose your operating system (Android or iOS), your phone's brand (like Vivo, Samsung, Poco, etc.), your RAM capacity (such as 2GB, 3GB, 4GB+), and your current network type (WiFi or Mobile Data).
 
 Once all the options are selected, click on the "Get Sensi" button. Within seconds, the tool will generate personalized sensitivity settings that are optimized specifically for your chosen configuration. These settings are designed to enhance your aim control, improve headshot accuracy, and deliver smoother gameplay. You can then either write them down, screenshot them, or download the settings as a clean, ready-to-use PDF file to apply directly in your Free Fire game settings.
 </p>
-  </div>    
 
-  <div class="container" id="why-useful">  
+  </div>    <div class="container" id="why-useful">  
     <h2>Sensi Generator Is Free ?</h2>  
     <p>One of the best things about Sensi Generator is that it is 100% free to use — now and always. There's no need to sign up, no hidden fees, and absolutely no subscription plans. All features and settings are fully accessible without requiring any account, email, or personal details. You can generate unlimited sensitivity settings, as many times as you want, for any device or network.
 
 Whether you're trying a new phone, switching networks, or just looking to improve your gameplay, Sensi Generator is always available to help — without asking for anything in return. It's built for the Free Fire community, by players who understand what real performance feels like. You get pro-level results, completely free of cost, anytime you need them.</p>  
-  </div>    
-
-  <div class="container" id="faq">  
+  </div>    <div class="container" id="faq">  
     <h2>Frequently Asked Questions (FAQ)</h2>  <div class="faq-item" tabindex="0">  
   <div class="faq-question">Q: What Is Sensi Generator ?</div>  
   <div class="faq-answer">A: It's a tool that gives the best Free Fire sensitivity based on your device.</div>  
@@ -342,15 +375,8 @@ Whether you're trying a new phone, switching networks, or just looking to improv
   <div class="faq-question">Q: Will It Work After Update ?</div>  
   <div class="faq-answer">A: Yes, but for best results, regenerate your settings after major updates.</div>  
 </div>
-  </div>    
 
-  <!-- Ad before Contact section -->
-  <div style="width:100%; height:120px; background:#9999ff; margin:20px 0; text-align:center; line-height:120px; font-weight:bold;">
-  PRE-CONTACT AD SPACE
-  <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('gizokraijaw.net',9364206,document.createElement('script'))</script>
-</div>
-
-  <div class="container" id="policy">  
+  </div>    <div class="container" id="policy">  
     <h2>Privacy Policy</h2> 
 <p>At Sensi Generator, your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect the information you provide while using our website.</p>
 
@@ -374,9 +400,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
 
 <p><strong>Contact Us</strong></p>
 <p>If you have any questions about this Privacy Policy, feel free to contact us through our contact section.</p>
-  </div>    
-
-  <div class="container" id="contact">  
+  </div>    <div class="container" id="contact">  
     <h2>Contact Us</h2>  
     <form onsubmit="event.preventDefault(); alert('Thank you for contacting us! We will get back soon.'); this.reset();">  
       <label for="name">Name:</label>  
@@ -388,23 +412,25 @@ Whether you're trying a new phone, switching networks, or just looking to improv
 
   <button type="submit">Send Message</button>  
 </form>
-  </div>    
 
-  <footer>  
+  </div>    <footer>  
     &copy; 2025 Sensi Viewer. All rights reserved.  
   </footer>    
 
-  <!-- Interstitial Ad code for next page -->
-  <div style="width:100%; height:150px; background:#ffcc99; margin:20px 0; text-align:center; line-height:150px; font-weight:bold;">
-  INTERSTITIAL AD SCRIPT (LOADS WHEN NAVIGATING TO NEXT PAGE)
+  <!-- Add interstitial ad script -->
   <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9361298,document.createElement('script'))</script>
-</div>
 
   <script>  
     // Sensi Generator Tool functionality
     const osSelect = document.getElementById('os-select');
     const deviceSelect = document.getElementById('device-select');
     const nextBtn = document.getElementById('next-btn');
+    const adOverlay = document.getElementById('ad-overlay');
+    const closeAdBtn = document.getElementById('close-ad');
+    
+    // Flag to track if ad has been shown
+    let adShown = false;
+    let nextPageParams = '';
     
     // Update device options based on OS selection
     osSelect.addEventListener('change', () => {
@@ -452,7 +478,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
       }
     });
     
-    // Next button functionality
+    // Next button functionality - show ad first
     nextBtn.addEventListener('click', () => {
       // Check if all options are selected
       const os = osSelect.value;
@@ -465,8 +491,33 @@ Whether you're trying a new phone, switching networks, or just looking to improv
         return;
       }
       
-      // Navigate to second.html page with parameters
-      window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
+      // Store parameters for later use
+      nextPageParams = `os=${os}&device=${device}&ram=${ram}&network=${network}`;
+      
+      // Show the interstitial ad
+      showInterstitialAd();
+    });
+    
+    // Function to show interstitial ad
+    function showInterstitialAd() {
+      adOverlay.style.display = 'flex';
+      
+      // This is a placeholder for the actual ad content
+      // The real ad will be loaded by the script you provided
+      document.getElementById('ad-content').innerHTML = '<div style="width: 300px; height: 250px; display: flex; justify-content: center; align-items: center; background: #333; color: white;">Advertisement Loading...</div>';
+      
+      // Set adShown flag to true
+      adShown = true;
+    }
+    
+    // Close ad button functionality
+    closeAdBtn.addEventListener('click', () => {
+      adOverlay.style.display = 'none';
+      
+      // After ad is closed, proceed to next page
+      if (adShown && nextPageParams) {
+        window.location.href = `second.html?${nextPageParams}`;
+      }
     });
   
     // FAQ toggle functionality  
