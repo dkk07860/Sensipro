@@ -199,46 +199,6 @@ form button:hover {
   background: #7f1616;  
 }  
 
-/* Ad Modal Overlay */
-.ad-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.ad-container {
-  background: #1c1c1c;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #B22222;
-  padding: 20px;
-  max-width: 90%;
-  position: relative;
-}
-
-.close-ad {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #B22222;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* Footer */  
 footer {  
   text-align: center;  
@@ -303,15 +263,7 @@ footer {
     <button id="next-btn">Next</button>
   </div>
 
-  <!-- Ad Overlay Modal -->
-  <div class="ad-overlay" id="ad-overlay">
-    <div class="ad-container">
-      <button class="close-ad" id="close-ad">✕</button>
-      <div id="ad-content">
-        <!-- The ad content will be loaded here -->
-      </div>
-    </div>
-  </div>
+
 
   <div class="container" id="what-is">  
     <h2>What Is Sensi Generator ?</h2>  
@@ -417,20 +369,14 @@ Whether you're trying a new phone, switching networks, or just looking to improv
     &copy; 2025 Sensi Viewer. All rights reserved.  
   </footer>    
 
-  <!-- Add interstitial ad script -->
-  <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9361298,document.createElement('script'))</script>
-
   <script>  
+    // Add the ad script to the document
+    (function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9361298,document.createElement('script'));
+    
     // Sensi Generator Tool functionality
     const osSelect = document.getElementById('os-select');
     const deviceSelect = document.getElementById('device-select');
     const nextBtn = document.getElementById('next-btn');
-    const adOverlay = document.getElementById('ad-overlay');
-    const closeAdBtn = document.getElementById('close-ad');
-    
-    // Flag to track if ad has been shown
-    let adShown = false;
-    let nextPageParams = '';
     
     // Update device options based on OS selection
     osSelect.addEventListener('change', () => {
@@ -478,7 +424,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
       }
     });
     
-    // Next button functionality - show ad first
+    // Next button functionality with ad trigger
     nextBtn.addEventListener('click', () => {
       // Check if all options are selected
       const os = osSelect.value;
@@ -491,33 +437,49 @@ Whether you're trying a new phone, switching networks, or just looking to improv
         return;
       }
       
-      // Store parameters for later use
-      nextPageParams = `os=${os}&device=${device}&ram=${ram}&network=${network}`;
+      // Trigger the ad before navigation
+      let adShown = false;
+      let adTimeout = false;
       
-      // Show the interstitial ad
-      showInterstitialAd();
-    });
-    
-    // Function to show interstitial ad
-    function showInterstitialAd() {
-      adOverlay.style.display = 'flex';
+      // Create and inject the ad script
+      const adScript = document.createElement('script');
+      adScript.innerHTML = `
+        (function(d,z,s){
+          s.src='https://'+d+'/401/'+z;
+          try{
+            (document.body||document.documentElement).appendChild(s)
+          }catch(e){}
+        })('groleegni.net',9361298,document.createElement('script'))
+      `;
+      document.body.appendChild(adScript);
       
-      // This is a placeholder for the actual ad content
-      // The real ad will be loaded by the script you provided
-      document.getElementById('ad-content').innerHTML = '<div style="width: 300px; height: 250px; display: flex; justify-content: center; align-items: center; background: #333; color: white;">Advertisement Loading...</div>';
+      // Set a timeout to navigate even if the ad doesn't load
+      setTimeout(() => {
+        adTimeout = true;
+        if (!adShown) {
+          // Navigate to second.html page with parameters
+          window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
+        }
+      }, 3000); // 3-second timeout
       
-      // Set adShown flag to true
-      adShown = true;
-    }
-    
-    // Close ad button functionality
-    closeAdBtn.addEventListener('click', () => {
-      adOverlay.style.display = 'none';
+      // Set up event listener for ad completion (this is a simplified approach)
+      window.addEventListener('message', function(event) {
+        // This would typically listen for a message from the ad iframe
+        // For this example, we're simplifying and just showing it works
+        if (event.data && event.data.type === 'adCompleted') {
+          adShown = true;
+          // Navigate to second.html page with parameters
+          window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
+        }
+      });
       
-      // After ad is closed, proceed to next page
-      if (adShown && nextPageParams) {
-        window.location.href = `second.html?${nextPageParams}`;
-      }
+      // Fallback if no ad event is fired
+      setTimeout(() => {
+        if (!adShown && !adTimeout) {
+          // Navigate to second.html page with parameters
+          window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
+        }
+      }, 5000); // 5-second fallback
     });
   
     // FAQ toggle functionality  
