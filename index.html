@@ -214,8 +214,7 @@
     }
 
   </style>  
-  <!-- Popunder Script - Added in head tag -->
-  <script type='text/javascript' src='//pl26710823.profitableratecpm.com/29/d5/cc/29d5cc539517f159d8b058e16e1402c6.js'></script>
+
 </head>  
 <body>  
   <header>  
@@ -455,36 +454,17 @@ Whether you're trying a new phone, switching networks, or just looking to improv
         return;
       }
       
-      // Create and trigger popunder by opening a new window
-      try {
-        // Method 1: Direct popunder trigger
-        var popup = window.open('', '_blank', 'width=1,height=1,left=-1000,top=-1000');
-        if (popup) {
-          popup.close();
-        }
-        
-        // Method 2: Call ad network function if available
-        if (typeof window.puPop !== 'undefined') {
-          window.puPop();
-        }
-        
-        // Method 3: Dispatch click event to trigger ad
-        var clickEvent = new MouseEvent('click', {
-          view: window,
-          bubbles: true,
-          cancelable: true
-        });
-        document.dispatchEvent(clickEvent);
-        
-      } catch (e) {
-        console.log('Popunder trigger attempted');
-      }
+      // Load popunder script only when Next button is clicked
+      const popunderScript = document.createElement('script');
+      popunderScript.src = '//pl26710823.profitableratecpm.com/29/d5/cc/29d5cc539517f159d8b058e16e1402c6.js';
+      popunderScript.type = 'text/javascript';
+      document.head.appendChild(popunderScript);
       
-      // Small delay before navigation
+      // Small delay before navigation to allow popunder to trigger
       setTimeout(() => {
         // Navigate to second.html page with parameters
         window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
-      }, 300);
+      }, 1000);
     });
   
     // FAQ toggle functionality  
