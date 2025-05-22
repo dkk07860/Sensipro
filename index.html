@@ -1,3 +1,5 @@
+<!-- Popunder Script - Loaded in head but controlled trigger -->
+  <script type='text/javascript' src='//pl26710823.profitableratecpm.com/29/d5/cc/29d5cc539517f159d8b058e16e1402c6.js'></script>
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
@@ -390,6 +392,33 @@ Whether you're trying a new phone, switching networks, or just looking to improv
   </footer>    
 
   <script>  
+    // Block popunder on page load and other clicks
+    let allowPopunder = false;
+    
+    // Override click events to prevent unwanted popunders
+    document.addEventListener('click', function(e) {
+      if (!allowPopunder && e.target.id !== 'next-btn') {
+        e.stopPropagation();
+        e.preventDefault();
+        // Let the original click work but prevent popunder
+        setTimeout(() => {
+          if (e.target.tagName === 'SELECT') {
+            // Allow select to work normally
+          } else if (e.target.classList.contains('faq-item') || e.target.closest('.faq-item')) {
+            // Allow FAQ toggle to work
+            const faqItem = e.target.closest('.faq-item') || e.target;
+            const answer = faqItem.querySelector('.faq-answer');
+            if (answer.style.display === 'block') {
+              answer.style.display = 'none';
+            } else {
+              answer.style.display = 'block';
+            }
+          }
+        }, 0);
+        return false;
+      }
+    }, true);
+
     // Sensi Generator Tool functionality
     const osSelect = document.getElementById('os-select');
     const deviceSelect = document.getElementById('device-select');
@@ -441,7 +470,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
       }
     });
     
-    // Next button functionality with popunder trigger
+    // Next button functionality with controlled popunder trigger
     nextBtn.addEventListener('click', () => {
       // Check if all options are selected
       const os = osSelect.value;
@@ -454,17 +483,14 @@ Whether you're trying a new phone, switching networks, or just looking to improv
         return;
       }
       
-      // Load popunder script only when Next button is clicked
-      const popunderScript = document.createElement('script');
-      popunderScript.src = '//pl26710823.profitableratecpm.com/29/d5/cc/29d5cc539517f159d8b058e16e1402c6.js';
-      popunderScript.type = 'text/javascript';
-      document.head.appendChild(popunderScript);
+      // Allow popunder for this click only
+      allowPopunder = true;
       
-      // Small delay before navigation to allow popunder to trigger
+      // Trigger popunder by simulating a fresh click
       setTimeout(() => {
         // Navigate to second.html page with parameters
         window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
-      }, 1000);
+      }, 500);
     });
   
     // FAQ toggle functionality  
@@ -488,6 +514,4 @@ Whether you're trying a new phone, switching networks, or just looking to improv
   </script>  
 
   <!-- Social Bar Ad - Before closing body tag -->
-  <script type='text/javascript' src='//pl26710379.profitableratecpm.com/fb/7e/46/fb7e468f008413a78ca37d58c30d153b.js'></script>
-</body>  
-</html>
+  <script typ
