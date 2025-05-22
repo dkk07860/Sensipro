@@ -283,7 +283,7 @@ footer {
 
   </div>    <div class="container" id="how-to-view-html">  
     <h2>Why Sensi Generator Is Useful ?</h2>  
-    <p>Sensi Generator isn't just a tool — it's a performance booster for every Free Fire player. Here's why it's so helpful:
+    <p>Sensi Generator isn't just a tool — it's a performance booster for every Free Fire player. Here's why it’s so helpful:
 
 Device-Specific Sensitivity: Every phone reacts differently. This tool gives you settings that fit your phone perfectly.
 
@@ -297,16 +297,16 @@ Updated Frequently: The tool uses real gameplay feedback and regular updates to 
 
   </div>    <div class="container" id="how-does-it-work">  
     <h2>How To Use Sensi Generator ?</h2>  
-    <p>Using the Sensi Generator is incredibly simple and beginner-friendly. You don't need any special skills or technical knowledge to get started. First, visit the tool page where you'll find a set of dropdown options. From there, select the details that match your device: choose your operating system (Android or iOS), your phone's brand (like Vivo, Samsung, Poco, etc.), your RAM capacity (such as 2GB, 3GB, 4GB+), and your current network type (WiFi or Mobile Data).
+    <p>Using the Sensi Generator is incredibly simple and beginner-friendly. You don’t need any special skills or technical knowledge to get started. First, visit the tool page where you’ll find a set of dropdown options. From there, select the details that match your device: choose your operating system (Android or iOS), your phone’s brand (like Vivo, Samsung, Poco, etc.), your RAM capacity (such as 2GB, 3GB, 4GB+), and your current network type (WiFi or Mobile Data).
 
-Once all the options are selected, click on the "Get Sensi" button. Within seconds, the tool will generate personalized sensitivity settings that are optimized specifically for your chosen configuration. These settings are designed to enhance your aim control, improve headshot accuracy, and deliver smoother gameplay. You can then either write them down, screenshot them, or download the settings as a clean, ready-to-use PDF file to apply directly in your Free Fire game settings.
+Once all the options are selected, click on the “Get Sensi” button. Within seconds, the tool will generate personalized sensitivity settings that are optimized specifically for your chosen configuration. These settings are designed to enhance your aim control, improve headshot accuracy, and deliver smoother gameplay. You can then either write them down, screenshot them, or download the settings as a clean, ready-to-use PDF file to apply directly in your Free Fire game settings.
 </p>
 
   </div>    <div class="container" id="why-useful">  
     <h2>Sensi Generator Is Free ?</h2>  
-    <p>One of the best things about Sensi Generator is that it is 100% free to use — now and always. There's no need to sign up, no hidden fees, and absolutely no subscription plans. All features and settings are fully accessible without requiring any account, email, or personal details. You can generate unlimited sensitivity settings, as many times as you want, for any device or network.
+    <p>One of the best things about Sensi Generator is that it is 100% free to use — now and always. There’s no need to sign up, no hidden fees, and absolutely no subscription plans. All features and settings are fully accessible without requiring any account, email, or personal details. You can generate unlimited sensitivity settings, as many times as you want, for any device or network.
 
-Whether you're trying a new phone, switching networks, or just looking to improve your gameplay, Sensi Generator is always available to help — without asking for anything in return. It's built for the Free Fire community, by players who understand what real performance feels like. You get pro-level results, completely free of cost, anytime you need them.</p>  
+Whether you’re trying a new phone, switching networks, or just looking to improve your gameplay, Sensi Generator is always available to help — without asking for anything in return. It’s built for the Free Fire community, by players who understand what real performance feels like. You get pro-level results, completely free of cost, anytime you need them.</p>  
   </div>    <div class="container" id="faq">  
     <h2>Frequently Asked Questions (FAQ)</h2>  <div class="faq-item" tabindex="0">  
   <div class="faq-question">Q: What Is Sensi Generator ?</div>  
@@ -315,7 +315,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
 
 <div class="faq-item" tabindex="0">  
   <div class="faq-question">Q: Is Sensi Generator Safe To Use ?  </div>  
-  <div class="faq-answer">A: Yes, it's 100% safe, no login or downloads required.</div>  
+  <div class="faq-answer">A: Yes, it’s 100% safe, no login or downloads required.</div>  
 </div>  
 
 <div class="faq-item" tabindex="0">  
@@ -344,7 +344,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
 <p><strong>4. Ads and External Links</strong></p>
 <p>We may display ads to support our free service. These ads may come from third-party networks which have their own privacy policies. We are not responsible for the privacy practices of external sites linked on our platform.</p>
 
-<p><strong>5. Children's Privacy</strong></p>
+<p><strong>5. Children’s Privacy</strong></p>
 <p>This tool is not directed to anyone under the age of 13. We do not knowingly collect any personal information from children.</p>
 
 <p><strong>6. Changes to This Policy</strong></p>
@@ -370,8 +370,6 @@ Whether you're trying a new phone, switching networks, or just looking to improv
   </footer>    
 
   <script>  
-    // Ad script will be loaded when clicking Next button
-    
     // Sensi Generator Tool functionality
     const osSelect = document.getElementById('os-select');
     const deviceSelect = document.getElementById('device-select');
@@ -423,7 +421,7 @@ Whether you're trying a new phone, switching networks, or just looking to improv
       }
     });
     
-    // Next button functionality with guaranteed ad display
+    // Next button functionality
     nextBtn.addEventListener('click', () => {
       // Check if all options are selected
       const os = osSelect.value;
@@ -436,90 +434,28 @@ Whether you're trying a new phone, switching networks, or just looking to improv
         return;
       }
       
-      // Disable the button to prevent multiple clicks
-      nextBtn.disabled = true;
-      nextBtn.textContent = "Loading...";
-      
-      // Define navigation function for later use
-      const navigateToNextPage = () => {
-        window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
-      };
-      
-      // Create a container for the ad that we can detect
-      const adContainer = document.createElement('div');
-      adContainer.id = 'ad-container-' + new Date().getTime();
-      adContainer.style.position = 'fixed';
-      adContainer.style.top = '0';
-      adContainer.style.left = '0';
-      adContainer.style.width = '100%';
-      adContainer.style.height = '100%';
-      adContainer.style.backgroundColor = 'rgba(0,0,0,0.8)';
-      adContainer.style.zIndex = '9999';
-      adContainer.style.display = 'flex';
-      adContainer.style.justifyContent = 'center';
-      adContainer.style.alignItems = 'center';
-      
-      // Add loading text inside container
-      const loadingText = document.createElement('div');
-      loadingText.textContent = 'Loading...';
-      loadingText.style.color = 'white';
-      loadingText.style.fontSize = '24px';
-      adContainer.appendChild(loadingText);
-      
-      // Append container to body
-      document.body.appendChild(adContainer);
-      
-      // Reference to our ad script element
-      let adScriptElement = null;
-      
-      // Create and inject the ad script with a properly created script element
-      const loadAd = () => {
-        // Remove any existing ad script
-        if (adScriptElement) {
-          adScriptElement.remove();
-        }
-        
-        // Create ad script using the proper method
-        adScriptElement = document.createElement('script');
-        
-        // Use the provided ad code
-        (function(d,z,s){
-          s.src='https://'+d+'/401/'+z;
-          try{
-            (document.body||document.documentElement).appendChild(s);
-          } catch(e){
-            console.error('Error loading ad:', e);
-          }
-        })('groleegni.net', 9361298, adScriptElement);
-      };
-      
-      // Load the ad
-      loadAd();
-      
-      // Set up a minimum display time for the ad
-      const minimumAdTime = 5000; // 5 seconds minimum ad display
-      const startTime = new Date().getTime();
-      
-      // Check if the ad has been properly loaded and displayed
-      const checkAdStatus = () => {
-        // Check if we've displayed for at least the minimum time
-        const currentTime = new Date().getTime();
-        const timeElapsed = currentTime - startTime;
-        
-        // Check if any ad elements have been created by the ad script
-        const adElements = document.querySelectorAll('iframe[src*="groleegni.net"], div[id*="gro"], div[class*="gro"]');
-        
-        if (adElements.length > 0) {
-          // Ad has been loaded, wait minimum time then navigate
-          setTimeout(() => {
-            adContainer.remove();
-            navigateToNextPage();
-          }, Math.max(0, minimumAdTime - timeElapsed));
-        } else if (timeElapsed < 8000) {
-          // Keep checking for up to 8 seconds
-          setTimeout(checkAdStatus, 500);
-        } else {
-          // After 8 seconds, try reloading the ad
-          if (timeElapsed < 15000) {
-            loadAd();
-            setTimeout(ch
+      // Navigate to second.html page with parameters
+      window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
+    });
+  
+    // FAQ toggle functionality  
+    document.querySelectorAll('.faq-item').forEach(item => {  
+      item.addEventListener('click', () => {  
+        const answer = item.querySelector('.faq-answer');  
+        if (answer.style.display === 'block') {  
+          answer.style.display = 'none';  
+        } else {  
+          answer.style.display = 'block';  
+        }  
+      });  
+      // Keyboard accessible toggle with enter key  
+      item.addEventListener('keydown', (e) => {  
+        if (e.key === 'Enter' || e.key === ' ') {  
+          e.preventDefault();  
+          item.click();  
+        }  
+      });  
+    });  
+  </script>  
+</body>  
+  </html>
