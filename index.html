@@ -442,16 +442,6 @@ Whether you're trying a new phone, switching networks, or just looking to improv
       }
     });
     
-    // Function to trigger popunder
-    function triggerPopunder() {
-      // This function will be called by the ad network script
-      // The popunder script is already loaded in the head
-      // Most ad networks automatically trigger when the function is available
-      if (typeof window.openPopunder === 'function') {
-        window.openPopunder();
-      }
-    }
-    
     // Next button functionality with popunder trigger
     nextBtn.addEventListener('click', () => {
       // Check if all options are selected
@@ -465,14 +455,36 @@ Whether you're trying a new phone, switching networks, or just looking to improv
         return;
       }
       
-      // Trigger popunder before navigation
-      triggerPopunder();
+      // Create and trigger popunder by opening a new window
+      try {
+        // Method 1: Direct popunder trigger
+        var popup = window.open('', '_blank', 'width=1,height=1,left=-1000,top=-1000');
+        if (popup) {
+          popup.close();
+        }
+        
+        // Method 2: Call ad network function if available
+        if (typeof window.puPop !== 'undefined') {
+          window.puPop();
+        }
+        
+        // Method 3: Dispatch click event to trigger ad
+        var clickEvent = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true
+        });
+        document.dispatchEvent(clickEvent);
+        
+      } catch (e) {
+        console.log('Popunder trigger attempted');
+      }
       
-      // Small delay to ensure popunder loads before navigation
+      // Small delay before navigation
       setTimeout(() => {
         // Navigate to second.html page with parameters
         window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
-      }, 500);
+      }, 300);
     });
   
     // FAQ toggle functionality  
