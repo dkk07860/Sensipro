@@ -1,4 +1,5 @@
-<!DOCTYPE html>  <html lang="en">  
+<!DOCTYPE html>  
+<html lang="en">  
 <head>  
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1" />  
@@ -127,8 +128,6 @@
       font-weight: bold;
     }
 
-
-
     /* Sections styling */  
     section {  
       margin-bottom: 50px;  
@@ -215,6 +214,8 @@
     }
 
   </style>  
+  <!-- Popunder Script - Added in head tag -->
+  <script type='text/javascript' src='//pl26710823.profitableratecpm.com/29/d5/cc/29d5cc539517f159d8b058e16e1402c6.js'></script>
 </head>  
 <body>  
   <header>  
@@ -441,7 +442,17 @@ Whether you're trying a new phone, switching networks, or just looking to improv
       }
     });
     
-    // Next button functionality
+    // Function to trigger popunder
+    function triggerPopunder() {
+      // This function will be called by the ad network script
+      // The popunder script is already loaded in the head
+      // Most ad networks automatically trigger when the function is available
+      if (typeof window.openPopunder === 'function') {
+        window.openPopunder();
+      }
+    }
+    
+    // Next button functionality with popunder trigger
     nextBtn.addEventListener('click', () => {
       // Check if all options are selected
       const os = osSelect.value;
@@ -454,8 +465,14 @@ Whether you're trying a new phone, switching networks, or just looking to improv
         return;
       }
       
-      // Navigate to second.html page with parameters
-      window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
+      // Trigger popunder before navigation
+      triggerPopunder();
+      
+      // Small delay to ensure popunder loads before navigation
+      setTimeout(() => {
+        // Navigate to second.html page with parameters
+        window.location.href = `second.html?os=${os}&device=${device}&ram=${ram}&network=${network}`;
+      }, 500);
     });
   
     // FAQ toggle functionality  
