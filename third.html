@@ -99,6 +99,53 @@
       margin-bottom: 15px;
       color: #B22222;
     }
+
+    /* Ad Container Styling for 4:1 Native Banner */
+    .ad-container {
+      max-width: 900px;
+      width: 100%;
+      background: #1c1c1c;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #5D3FD3;
+      padding: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ad-container h3 {
+      color: #5D3FD3;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      opacity: 0.7;
+    }
+
+    /* Native Banner 4:1 Ratio Styling */
+    #container-e61244efd250273d3a810811ef832a90 {
+      width: 100%;
+      max-width: 728px;
+      height: auto;
+      min-height: 182px;
+      background: #2e2e2e;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #333;
+    }
+
+    /* Responsive adjustments for native ad */
+    @media (max-width: 768px) {
+      #container-e61244efd250273d3a810811ef832a90 {
+        max-width: 100%;
+        min-height: 150px;
+      }
+    }
+
     footer {
       text-align: center;
       color: #999;
@@ -111,13 +158,26 @@
   </style>
 </head>
 <body>
+  <!-- Popunder ads unit -->
+  <script type='text/javascript' src='//pl26719886.profitableratecpm.com/e9/ab/9d/e9ab9dc498fafaac6a551ae97fbc5c5c.js'></script>
+
+  <!-- Social bar ad -->
+  <script type='text/javascript' src='//pl26719881.profitableratecpm.com/08/ef/f2/08eff2b2a4fa8d248e48c9cd45df0b69.js'></script>
+
   <header>
     <div class="logo">Sensi Generator</div>
   </header>
 
   <div class="container" id="results-section">
     <h1>Your Device Sensitivity Is Ready!</h1>
-    <a href="https://github.com/dkk07860/Sensipro/raw/refs/heads/main/Sensi.pdf" class="download-button" target="_blank">DOWNLOAD NOW</a>
+    <a href="https://www.youtube.com" class="download-button" target="_blank">DOWNLOAD NOW</a>
+  </div>
+
+  <!-- Native banner ad placed right below the download button -->
+  <div class="ad-container">
+    <h3>Sponsored Content</h3>
+    <script async="async" data-cfasync="false" src="//pl26719875.profitableratecpm.com/e61244efd250273d3a810811ef832a90/invoke.js"></script>
+    <div id="container-e61244efd250273d3a810811ef832a90"></div>
   </div>
 
   <div class="container" id="benefits-section">
@@ -185,4 +245,4 @@
     © 2025 Sensi Generator. All rights reserved.
   </footer>
 </body>
-  </html>
+</html>
