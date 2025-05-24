@@ -408,14 +408,9 @@
             const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
             if (isMobile) {
-                // Mobile WhatsApp
+                // Mobile WhatsApp - direct app link
                 const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(message)}`;
                 window.location.href = whatsappUrl;
-                
-                // Fallback to web WhatsApp after 2 seconds if app doesn't open
-                setTimeout(() => {
-                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
-                }, 2000);
             } else {
                 // Desktop - open web WhatsApp
                 window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
@@ -432,7 +427,7 @@
                 setTimeout(() => {
                     // Replace this URL with your desired link
                     window.location.href = 'https://google.com';
-                }, 3000);
+                }, 5000);
             }
         });
 
