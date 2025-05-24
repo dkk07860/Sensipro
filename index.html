@@ -270,10 +270,24 @@
             opacity: 1;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .download-btn:disabled {
+            background: linear-gradient(135deg, #94a3b8 0%, #64748b 50%, #475569 100%);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .download-btn:disabled:hover {
+            transform: none;
+            box-shadow: 0 10px 30px rgba(148, 163, 184, 0.3);
+        }
+
+        .timer-active {
+            animation: pulse-timer 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse-timer {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
 
         .stats {
@@ -403,10 +417,62 @@
     </div>
 
     <script>
-        // Enhanced click effects and animations
+        // Timer functionality with page visit tracking
         const downloadBtn = document.getElementById('downloadBtn');
+        const timerSpan = document.getElementById('timer');
+        const downloadText = document.getElementById('downloadText');
+        const downloadIcon = document.getElementById('downloadIcon');
         
+        let timeLeft = 10;
+        let timerInterval;
+
+        function startTimer() {
+            console.log('Timer started with', timeLeft, 'seconds'); // Debug log
+            downloadBtn.classList.add('timer-active');
+            downloadBtn.disabled = true;
+            timerSpan.textContent = timeLeft;
+            downloadText.innerHTML = `Please wait <span id="timer">${timeLeft}</span>s`;
+            downloadIcon.textContent = '⏳';
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                console.log('Time left:', timeLeft); // Debug log
+                
+                // Update the timer display
+                const currentTimerSpan = document.getElementById('timer');
+                if (currentTimerSpan) {
+                    currentTimerSpan.textContent = timeLeft;
+                }
+                
+                if (timeLeft <= 0) {
+                    console.log('Timer completed!'); // Debug log
+                    clearInterval(timerInterval);
+                    enableDownload();
+                }
+            }, 1000);
+        }
+
+        function enableDownload() {
+            console.log('Download enabled!'); // Debug log
+            downloadBtn.disabled = false;
+            downloadBtn.classList.remove('timer-active');
+            downloadText.innerHTML = 'Download Now';
+            downloadIcon.textContent = '⬇️';
+            
+            // Add click event for download
+            downloadBtn.onclick = function() {
+                console.log('Download clicked!'); // Debug log
+                window.open('https://www.youtube.com', '_blank');
+            };
+        }
+
+        // Enhanced click effects and animations
         downloadBtn.addEventListener('click', function(e) {
+            if (this.disabled) {
+                console.log('Button disabled, click ignored'); // Debug log
+                return;
+            }
+            
             // Create ripple effect
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
@@ -457,14 +523,20 @@
             });
         });
 
-        // Button hover sound effect (visual feedback)
+        // Button hover effects (only when enabled)
         downloadBtn.addEventListener('mouseenter', function() {
-            this.style.filter = 'brightness(1.1)';
+            if (!this.disabled) {
+                this.style.filter = 'brightness(1.1)';
+            }
         });
 
         downloadBtn.addEventListener('mouseleave', function() {
             this.style.filter = 'brightness(1)';
         });
+
+        // Initialize timer on page load
+        console.log('Page loaded, starting timer'); // Debug log
+        startTimer();
     </script>
 </body>
 </html>
