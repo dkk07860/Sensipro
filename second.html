@@ -1,248 +1,455 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>Sensi Generator Results</title>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto&display=swap" rel="stylesheet"/>
-  <style>  
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #121212;
-      color: #eee;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-    h1, h2, h3 {
-      font-family: 'Creepster', cursive;
-      color: #B22222;
-      margin-bottom: 15px;
-    }
-    a {
-      color: #B22222;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #5D3FD3;
-    }
-    .container {
-      max-width: 900px;
-      width: 100%;
-      background: #1c1c1c;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #B22222;
-      padding: 30px 40px 40px 40px;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    header .logo {
-      font-size: 3rem;
-      color: #B22222;
-      letter-spacing: 3px;
-      text-shadow: 0 0 6px #B22222;
-    }
-    .download-button {
-      background: #B22222;
-      color: white;
-      padding: 20px 50px;
-      font-size: 1.5rem;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 0 20px #B22222;
-      margin-top: 30px;
-      transition: all 0.3s ease;
-      display: inline-block;
-      font-weight: bold;
-      letter-spacing: 1px;
-      animation: pulse 2s infinite;
-    }
-    .download-button:hover {
-      background: #7f1616;
-      transform: scale(1.05);
-      box-shadow: 0 0 30px #B22222;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(178, 34, 34, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(178, 34, 34, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(178, 34, 34, 0); }
-    }
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin: 30px 0;
-    }
-    .benefit-item {
-      background: #2a2a2a;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 10px #5D3FD3;
-      transition: transform 0.3s ease;
-    }
-    .benefit-item:hover {
-      transform: translateY(-5px);
-    }
-    .benefit-icon {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: #B22222;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Recharge - Share & Get</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Ad Container Styling for 4:1 Native Banner */
-    .ad-container {
-      max-width: 900px;
-      width: 100%;
-      background: #1c1c1c;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #5D3FD3;
-      padding: 15px;
-      margin-bottom: 30px;
-      text-align: center;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .ad-container h3 {
-      color: #5D3FD3;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      opacity: 0.7;
-    }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
 
-    /* Native Banner 4:1 Ratio Styling */
-    #container-e61244efd250273d3a810811ef832a90 {
-      width: 100%;
-      max-width: 728px;
-      height: auto;
-      min-height: 182px;
-      background: #2e2e2e;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #333;
-    }
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
 
-    /* Responsive adjustments for native ad */
-    @media (max-width: 768px) {
-      #container-e61244efd250273d3a810811ef832a90 {
-        max-width: 100%;
-        min-height: 150px;
-      }
-    }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
 
-    footer {
-      text-align: center;
-      color: #999;
-      font-size: 0.9rem;
-      margin-top: auto;
-      padding: 10px 0;
-      width: 100%;
-      border-top: 1px solid #333;
-    }
-  </style>
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .header h2 {
+            color: #667eea;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .instruction {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .instruction h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .instruction p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .progress-section {
+            margin-bottom: 30px;
+        }
+
+        .progress-label {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .share-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .share-btn:active {
+            transform: translateY(0);
+        }
+
+        .get-recharge-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+            pointer-events: none;
+            margin-top: 20px;
+        }
+
+        .get-recharge-btn.active {
+            opacity: 1;
+            pointer-events: all;
+            animation: glow 2s infinite alternate;
+        }
+
+        .get-recharge-btn.active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
+            to { box-shadow: 0 0 30px rgba(255, 107, 107, 0.8); }
+        }
+
+        .share-count {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .share-item {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #999;
+            transition: all 0.3s ease;
+        }
+
+        .share-item.completed {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal h2 {
+            color: #ff6b6b;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .modal p {
+            color: #333;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .warning-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .loading-dots {
+            display: inline-block;
+            font-size: 1.2rem;
+        }
+
+        .loading-dots:after {
+            content: '';
+            animation: dots 2s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            
+            .header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .instruction h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Popunder ads unit -->
-  <script type='text/javascript' src='//pl26719886.profitableratecpm.com/e9/ab/9d/e9ab9dc498fafaac6a551ae97fbc5c5c.js'></script>
+    <div class="container">
+        <div class="success-icon">🎉</div>
+        
+        <div class="header">
+            <h1>You are selected for Free Recharge!</h1>
+            <h2>आप फ्री रिचार्ज के लिए चुने गए हैं!</h2>
+        </div>
 
-  <!-- Social bar ad -->
-  <script type='text/javascript' src='//pl26719881.profitableratecpm.com/08/ef/f2/08eff2b2a4fa8d248e48c9cd45df0b69.js'></script>
+        <div class="instruction">
+            <h3>🎯 5 ग्रुप में शेयर करो और फ्री रिचार्ज पाओ!</h3>
+            <p>अपने 5 व्हाट्सऐप ग्रुप में लिंक शेयर करें और मुफ्त रिचार्ज पाएं। हर शेयर के बाद वापस आना जरूरी है।</p>
+        </div>
 
-  <header>
-    <div class="logo">Sensi Generator</div>
-  </header>
+        <div class="progress-section">
+            <div class="progress-label">शेयरिंग प्रोग्रेस</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0/5 पूर्ण</div>
+        </div>
 
-  <div class="container" id="results-section">
-    <h1>Your Device Sensitivity Is Ready!</h1>
-    <a href="https://www.youtube.com" class="download-button" target="_blank">DOWNLOAD NOW</a>
-  </div>
+        <div class="share-count">
+            <div class="share-item" id="share1">1</div>
+            <div class="share-item" id="share2">2</div>
+            <div class="share-item" id="share3">3</div>
+            <div class="share-item" id="share4">4</div>
+            <div class="share-item" id="share5">5</div>
+        </div>
 
-  <!-- Native banner ad placed right below the download button -->
-  <div class="ad-container">
-    <h3>Sponsored Content</h3>
-    <script async="async" data-cfasync="false" src="//pl26719875.profitableratecpm.com/e61244efd250273d3a810811ef832a90/invoke.js"></script>
-    <div id="container-e61244efd250273d3a810811ef832a90"></div>
-  </div>
+        <button class="share-btn" id="shareBtn">
+            📱 व्हाट्सऐप में शेयर करें
+        </button>
 
-  <div class="container" id="benefits-section">
-    <h2>Benefits Of Your New Sensitivity Settings</h2>
-    <p>These optimized settings provide the following advantages for your specific configuration:</p>
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <div class="benefit-icon">🎯</div>
-        <h3>Improved Accuracy</h3>
-        <p>Experience greater precision in games and applications with perfectly balanced sensitivity tailored to your refresh rate.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">⚡</div>
-        <h3>Faster Response</h3>
-        <p>Enjoy noticeably reduced input lag with our optimized settings that leverage your device's capabilities.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">🔋</div>
-        <h3>Battery Optimization</h3>
-        <p>Our intelligent calibration ensures maximum performance while maintaining efficient power consumption.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">🎮</div>
-        <h3>Enhanced Gaming</h3>
-        <p>Gain a competitive edge with smoother tracking and more consistent aiming during intense gameplay.</p>
-      </div>
+        <button class="get-recharge-btn" id="getRechargeBtn">
+            🎁 GET FREE RECHARGE
+        </button>
     </div>
-  </div>
 
-  <div class="container" id="instructions">
-    <h2>How To Apply Your New Settings</h2>
-    <p>Follow these simple steps to implement your optimized sensitivity settings:</p>
-    <ol style="margin-left: 20px; margin-top: 15px; text-align: left;">
-      <li>Click the <strong>DOWNLOAD NOW</strong> button above to download your configuration file</li>
-      <li>Open the downloaded file with your default application</li>
-      <li>Follow the on-screen instructions to apply the settings to your device</li>
-      <li>Restart your device to ensure all changes take effect properly</li>
-      <li>Enjoy your enhanced experience with optimized sensitivity settings!</li>
-    </ol>
-    <p style="margin-top: 20px;">For additional assistance or to fine-tune your settings further, don't hesitate to contact our support team using the contact form on our main page.</p>
-  </div>
-
-  <div class="container" id="motivation">
-    <h2>Stay Ahead in the Game</h2>
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <div class="benefit-icon">🔥</div>
-        <h3>Train Daily</h3>
-        <p>Consistency with your new sensitivity settings will lead to mastery. Practice every day!</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">🛡️</div>
-        <h3>Optimize More</h3>
-        <p>Try different settings regularly to find your ultimate comfort zone.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">🚀</div>
-        <h3>Track Your Progress</h3>
-        <p>Note your improvement in accuracy, reflex, and gameplay over time.</p>
-      </div>
+    <!-- Modal -->
+    <div id="warningModal" class="modal">
+        <div class="modal-content">
+            <div class="warning-icon">⚠️</div>
+            <h2>सावधान रहें!</h2>
+            <p>तुम फूल बन चुके हो! ऐसे फ्री रिचार्ज नहीं मिलता कभी। सावधान रहें और किसी भी फ्रॉड से बचें।</p>
+            <div class="loading-dots" id="redirectText">आपको सुरक्षित साइट पर ले जाया जा रहा है</div>
+        </div>
     </div>
-  </div>
 
-  <footer>
-    © 2025 Sensi Generator. All rights reserved.
-  </footer>
+    <script>
+        let shareCount = 0;
+        const maxShares = 5;
+
+        // Load saved progress on page load
+        if (localStorage.getItem('shareCount')) {
+            shareCount = parseInt(localStorage.getItem('shareCount'));
+            updateProgress();
+        }
+
+        // Check if user came back from WhatsApp
+        window.addEventListener('focus', function() {
+            // Small delay to ensure proper detection
+            setTimeout(() => {
+                const currentCount = parseInt(localStorage.getItem('shareCount') || '0');
+                const pendingShare = localStorage.getItem('pendingShare');
+                
+                if (pendingShare === 'true' && shareCount < maxShares) {
+                    shareCount++;
+                    updateProgress();
+                    localStorage.removeItem('pendingShare');
+                }
+            }, 500);
+        });
+
+        function updateProgress() {
+            // Save progress
+            localStorage.setItem('shareCount', shareCount);
+            
+            // Update progress bar
+            const progressPercent = (shareCount / maxShares) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+            document.getElementById('progressText').textContent = `${shareCount}/${maxShares} पूर्ण`;
+
+            // Update share items
+            for (let i = 1; i <= shareCount; i++) {
+                const shareItem = document.getElementById(`share${i}`);
+                if (shareItem) {
+                    shareItem.classList.add('completed');
+                }
+            }
+
+            // Enable Get Recharge button if all shares completed
+            if (shareCount >= maxShares) {
+                const rechargeBtn = document.getElementById('getRechargeBtn');
+                rechargeBtn.classList.add('active');
+                rechargeBtn.textContent = '🎁 अब फ्री रिचार्ज लें!';
+                
+                // Hide share button
+                const shareBtn = document.getElementById('shareBtn');
+                shareBtn.style.display = 'none';
+            }
+        }
+
+        // Share button click
+        document.getElementById('shareBtn').addEventListener('click', function() {
+            const message = "Open this link http://yt.com";
+            
+            // Mark that a share is pending
+            localStorage.setItem('pendingShare', 'true');
+            
+            // Try mobile WhatsApp first, then web
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // Mobile WhatsApp
+                const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(message)}`;
+                window.location.href = whatsappUrl;
+                
+                // Fallback to web WhatsApp after 2 seconds if app doesn't open
+                setTimeout(() => {
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
+                }, 2000);
+            } else {
+                // Desktop - open web WhatsApp
+                window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
+            }
+        });
+
+        // Get Recharge button click
+        document.getElementById('getRechargeBtn').addEventListener('click', function() {
+            if (shareCount >= maxShares) {
+                // Show warning modal
+                document.getElementById('warningModal').style.display = 'block';
+                
+                // Redirect after 5 seconds
+                setTimeout(() => {
+                    // Replace this URL with your desired link
+                    window.location.href = 'https://google.com';
+                }, 5000);
+            }
+        });
+
+        // Initial progress update
+        updateProgress();
+
+        // Add some entrance animation
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '0';
+            document.querySelector('.container').style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                document.querySelector('.container').style.transition = 'all 0.6s ease';
+                document.querySelector('.container').style.opacity = '1';
+                document.querySelector('.container').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
