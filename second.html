@@ -404,17 +404,9 @@
             // Mark that a share is pending
             localStorage.setItem('pendingShare', 'true');
             
-            // Try mobile WhatsApp first, then web
-            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            if (isMobile) {
-                // Mobile WhatsApp - direct app link
-                const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(message)}`;
-                window.location.href = whatsappUrl;
-            } else {
-                // Desktop - open web WhatsApp
-                window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
-            }
+            // Only mobile WhatsApp
+            const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappUrl;
         });
 
         // Get Recharge button click
