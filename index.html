@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -81,15 +82,6 @@
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
-        select::after {
-            content: '▼';
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-        }
-
         .sim-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -116,12 +108,6 @@
             border-color: #667eea;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-        }
-
-        .sim-card img {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 8px;
         }
 
         .sim-name {
@@ -219,10 +205,6 @@
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
 
-        .recharge-btn:active {
-            transform: translateY(0);
-        }
-
         .features {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -252,15 +234,15 @@
                 padding: 30px 20px;
                 margin: 10px;
             }
-            
+
             .header h1 {
                 font-size: 1.8rem;
             }
-            
+
             .sim-options {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .features {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -276,26 +258,16 @@
         </div>
 
         <form id="rechargeForm">
-            <!-- SIM Selection -->
             <div class="form-group">
                 <label>📱 अपना नेटवर्क चुनें</label>
                 <div class="sim-options">
-                    <div class="sim-card" data-sim="jio">
-                        <div class="sim-name">JIO</div>
-                    </div>
-                    <div class="sim-card" data-sim="airtel">
-                        <div class="sim-name">AIRTEL</div>
-                    </div>
-                    <div class="sim-card" data-sim="vi">
-                        <div class="sim-name">VI</div>
-                    </div>
-                    <div class="sim-card" data-sim="bsnl">
-                        <div class="sim-name">BSNL</div>
-                    </div>
+                    <div class="sim-card" data-sim="jio"><div class="sim-name">JIO</div></div>
+                    <div class="sim-card" data-sim="airtel"><div class="sim-name">AIRTEL</div></div>
+                    <div class="sim-card" data-sim="vi"><div class="sim-name">VI</div></div>
+                    <div class="sim-card" data-sim="bsnl"><div class="sim-name">BSNL</div></div>
                 </div>
             </div>
 
-            <!-- Mobile Number -->
             <div class="form-group">
                 <label>📞 मोबाइल नंबर डालें</label>
                 <div class="mobile-input">
@@ -303,7 +275,6 @@
                 </div>
             </div>
 
-            <!-- Recharge Plans -->
             <div class="form-group">
                 <label>💰 रिचार्ज प्लान चुनें</label>
                 <div class="recharge-plans">
@@ -312,55 +283,47 @@
                             <div class="plan-duration">1 महीना</div>
                             <div class="plan-price">₹399</div>
                         </div>
-                        <div class="plan-benefits">
-                            2GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन
-                        </div>
+                        <div class="plan-benefits">2GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन</div>
                     </div>
-                    
                     <div class="plan-card" data-plan="3months">
                         <div class="plan-header">
                             <div class="plan-duration">3 महीने</div>
                             <div class="plan-price">₹999</div>
                         </div>
-                        <div class="plan-benefits">
-                            1.5GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन
-                        </div>
+                        <div class="plan-benefits">1.5GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन</div>
                     </div>
-                    
                     <div class="plan-card" data-plan="6months">
                         <div class="plan-header">
                             <div class="plan-duration">6 महीने</div>
                             <div class="plan-price">₹1799</div>
                         </div>
-                        <div class="plan-benefits">
-                            2GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन
-                        </div>
+                        <div class="plan-benefits">2GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन</div>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="recharge-btn" id="rechargeButton">
-                🎁 फ्री रिचार्ज करें
-            </button>
+            <button type="submit" class="recharge-btn" id="rechargeButton">🎁 फ्री रिचार्ज करें</button>
         </form>
 
         <div class="features">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-text">तुरंत रिचार्ज</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <div class="feature-text">100% सुरक्षित</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🆓</div>
-                <div class="feature-text">बिल्कुल मुफ्त</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📱</div>
-                <div class="feature-text">सभी नेटवर्क</div>
-            </div>
+            <div class="feature"><div class="feature-icon">⚡</div><div class="feature-text">तुरंत रिचार्ज</div></div>
+            <div class="feature"><div class="feature-icon">🔒</div><div class="feature-text">100% सुरक्षित</div></div>
+            <div class="feature"><div class="feature-icon">🆓</div><div class="feature-text">बिल्कुल मुफ्त</div></div>
+            <div class="feature"><div class="feature-icon">📱</div><div class="feature-text">सभी नेटवर्क</div></div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://free-recharge.sensi.sbs/about.html" target="_blank" style="text-decoration: none;">
+                <button style="padding: 12px 25px; margin: 10px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;">
+                    About Us
+                </button>
+            </a>
+            <a href="https://free-recharge.sensi.sbs/contact.html" target="_blank" style="text-decoration: none;">
+                <button style="padding: 12px 25px; margin: 10px; background: #764ba2; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;">
+                    Contact
+                </button>
+            </a>
         </div>
     </div>
 
@@ -368,79 +331,62 @@
         let selectedSim = '';
         let selectedPlan = '';
 
-        // SIM Selection
         document.querySelectorAll('.sim-card').forEach(card => {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function () {
                 document.querySelectorAll('.sim-card').forEach(c => c.classList.remove('selected'));
                 this.classList.add('selected');
                 selectedSim = this.dataset.sim;
             });
         });
 
-        // Plan Selection
         document.querySelectorAll('.plan-card').forEach(card => {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function () {
                 document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
                 this.classList.add('selected');
                 selectedPlan = this.dataset.plan;
             });
         });
 
-        // Mobile Number Validation
-        document.getElementById('mobileNumber').addEventListener('input', function() {
+        document.getElementById('mobileNumber').addEventListener('input', function () {
             this.value = this.value.replace(/[^0-9]/g, '');
         });
 
-        // Form Submission
-        document.getElementById('rechargeForm').addEventListener('submit', function(e) {
+        document.getElementById('rechargeForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
             const mobileNumber = document.getElementById('mobileNumber').value;
-            
-            // Validation
+
             if (!selectedSim) {
                 alert('कृपया अपना नेटवर्क चुनें');
                 return;
             }
-            
+
             if (!mobileNumber || mobileNumber.length !== 10) {
                 alert('कृपया सही मोबाइल नंबर डालें (10 अंक)');
                 return;
             }
-            
+
             if (!selectedPlan) {
                 alert('कृपया रिचार्ज प्लान चुनें');
                 return;
             }
 
-            // Show loading
             const button = document.getElementById('rechargeButton');
             button.innerHTML = '⏳ प्रोसेसिंग...';
             button.disabled = true;
 
-            // Simulate processing and redirect
             setTimeout(() => {
-                // Store data for next page (if needed)
-                const rechargeData = {
-                    sim: selectedSim,
-                    mobile: mobileNumber,
-                    plan: selectedPlan
-                };
-                
-                // Redirect to second.html
                 window.location.href = 'second.html';
             }, 2000);
         });
 
-        // Add some smooth animations
-        window.addEventListener('load', function() {
-            document.querySelector('.container').style.opacity = '0';
-            document.querySelector('.container').style.transform = 'translateY(30px)';
-            
+        window.addEventListener('load', function () {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(30px)';
             setTimeout(() => {
-                document.querySelector('.container').style.transition = 'all 0.6s ease';
-                document.querySelector('.container').style.opacity = '1';
-                document.querySelector('.container').style.transform = 'translateY(0)';
+                container.style.transition = 'all 0.6s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
             }, 100);
         });
     </script>
