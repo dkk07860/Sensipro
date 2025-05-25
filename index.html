@@ -215,7 +215,7 @@
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 12php;
             font-size: 1.2rem;
             font-weight: 700;
             cursor: pointer;
@@ -254,6 +254,44 @@
             font-weight: 600;
         }
 
+        .footer-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer-btn {
+            padding: 12px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .footer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-about {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-contact {
+            background: #764ba2;
+            color: white;
+        }
+
+        .btn-privacy {
+            background: #ff6b6b;
+            color: white;
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 30px 20px;
@@ -271,6 +309,12 @@
             .features {
                 grid-template-columns: 1fr;
                 gap: 15px;
+            }
+
+            .footer-btn {
+                display: block;
+                margin: 10px auto;
+                max-width: 200px;
             }
         }
     </style>
@@ -329,16 +373,15 @@
         </div>
 
         <!-- Footer Buttons -->
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="https://free-recharge.sensi.sbs/about.html" target="_blank" style="text-decoration: none;">
-                <button style="padding: 12px 25px; margin: 10px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;">
-                    About Us
-                </button>
+        <div class="footer-buttons">
+            <a href="https://free-recharge.sensi.sbs/about.html" target="_blank" class="footer-btn btn-about">
+                About Us
             </a>
-            <a href="https://free-recharge.sensi.sbs/contact.html" target="_blank" style="text-decoration: none;">
-                <button style="padding: 12px 25px; margin: 10px; background: #764ba2; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;">
-                    Contact
-                </button>
+            <a href="https://free-recharge.sensi.sbs/contact.html" target="_blank" class="footer-btn btn-contact">
+                Contact
+            </a>
+            <a href="https://free-recharge.sensi.sbs/privacy.html" target="_blank" class="footer-btn btn-privacy">
+                Privacy Policy
             </a>
         </div>
     </div>
