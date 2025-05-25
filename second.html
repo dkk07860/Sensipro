@@ -416,17 +416,10 @@ https://free-recharge.sensi.sbs`;
 
         // Get Recharge button click
         document.getElementById('getRechargeBtn').addEventListener('click', function() {
-            if (shareCount >= maxShares) {
-                // Show warning modal
-                document.getElementById('warningModal').style.display = 'block';
-                
-                // Redirect after 5 seconds
-                setTimeout(() => {
-                    // Replace this URL with your desired link
-                    window.location.href = 'https://google.com';
-                }, 5000);
-            }
-        });
+    if (shareCount >= maxShares) {
+        window.location.href = 'third.html';
+    }
+});
 
         // Initial progress update
         updateProgress();
