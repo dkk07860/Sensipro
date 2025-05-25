@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Mobile Recharge - मुफ्त रिचार्ज करें</title>
+    <title>Free Recharge Giveaway - मुफ्त रिचार्ज गिवअवे</title>
     <style>
         * {
             margin: 0;
@@ -47,6 +46,32 @@
         .header p {
             color: #666;
             font-size: 1.1rem;
+        }
+
+        .giveaway-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        .giveaway-banner h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .giveaway-banner p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
         .form-group {
@@ -253,8 +278,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎯 Free Recharge</h1>
-            <p>मुफ्त में अपना मोबाइल रिचार्ज करें</p>
+            <h1>🎁 Free Recharge Giveaway</h1>
+            <p>मुफ्त रिचार्ज गिवअवे - अभी जीतें!</p>
+        </div>
+
+        <div class="giveaway-banner">
+            <h2>🎉 स्पेशल गिवअवे ऑफर!</h2>
+            <p>100% मुफ्त रिचार्ज जीतने का मौका</p>
         </div>
 
         <form id="rechargeForm">
@@ -278,38 +308,24 @@
             <div class="form-group">
                 <label>💰 रिचार्ज प्लान चुनें</label>
                 <div class="recharge-plans">
-                    <div class="plan-card" data-plan="1month">
+                    <div class="plan-card selected" data-plan="1month">
                         <div class="plan-header">
                             <div class="plan-duration">1 महीना</div>
-                            <div class="plan-price">₹399</div>
-                        </div>
-                        <div class="plan-benefits">2GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन</div>
-                    </div>
-                    <div class="plan-card" data-plan="3months">
-                        <div class="plan-header">
-                            <div class="plan-duration">3 महीने</div>
-                            <div class="plan-price">₹999</div>
+                            <div class="plan-price">₹349</div>
                         </div>
                         <div class="plan-benefits">1.5GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन</div>
-                    </div>
-                    <div class="plan-card" data-plan="6months">
-                        <div class="plan-header">
-                            <div class="plan-duration">6 महीने</div>
-                            <div class="plan-price">₹1799</div>
-                        </div>
-                        <div class="plan-benefits">2GB डेली डेटा + अनलिमिटेड कॉलिंग + 100 SMS/दिन</div>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="recharge-btn" id="rechargeButton">🎁 फ्री रिचार्ज करें</button>
+            <button type="submit" class="recharge-btn" id="rechargeButton">🎁 गिवअवे में भाग लें</button>
         </form>
 
         <div class="features">
             <div class="feature"><div class="feature-icon">⚡</div><div class="feature-text">तुरंत रिचार्ज</div></div>
             <div class="feature"><div class="feature-icon">🔒</div><div class="feature-text">100% सुरक्षित</div></div>
             <div class="feature"><div class="feature-icon">🆓</div><div class="feature-text">बिल्कुल मुफ्त</div></div>
-            <div class="feature"><div class="feature-icon">📱</div><div class="feature-text">सभी नेटवर्क</div></div>
+            <div class="feature"><div class="feature-icon">🎁</div><div class="feature-text">गिवअवे ऑफर</div></div>
         </div>
 
         <!-- Footer Buttons -->
@@ -329,7 +345,7 @@
 
     <script>
         let selectedSim = '';
-        let selectedPlan = '';
+        let selectedPlan = '1month'; // Default selected plan
 
         document.querySelectorAll('.sim-card').forEach(card => {
             card.addEventListener('click', function () {
@@ -339,6 +355,7 @@
             });
         });
 
+        // Plan is already selected by default, but keeping the functionality
         document.querySelectorAll('.plan-card').forEach(card => {
             card.addEventListener('click', function () {
                 document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
@@ -362,11 +379,6 @@
 
             if (!mobileNumber || mobileNumber.length !== 10) {
                 alert('कृपया सही मोबाइल नंबर डालें (10 अंक)');
-                return;
-            }
-
-            if (!selectedPlan) {
-                alert('कृपया रिचार्ज प्लान चुनें');
                 return;
             }
 
