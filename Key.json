@@ -1,0 +1,30 @@
+[
+  {
+    "id": "6d95fal7c7e40bea",
+    "username": "obitoxcheat",
+    "password": "obito1",
+    "expiresAt": "2025-12-31",
+    "allowOffline": true
+  },
+  {
+    "id": "2691611ac261ae3e",
+    "username": "obitoxcheat",
+    "password": "obito1",
+    "expiresAt": "2500-12-31",
+    "allowOffline": true
+  },
+  {
+    "id": "bb18a8c4f286bda6",
+    "username": "obitoxcheat",
+    "password": "obito2",
+    "expiresAt": "2025-10-22",
+    "allowOffline": true
+  },
+  {
+    "id": "android_device_id_2",
+    "username": "user2",
+    "password": "pass2",
+    "expiresAt": "2025-11-30",
+    "allowOffline": false
+  }
+]
